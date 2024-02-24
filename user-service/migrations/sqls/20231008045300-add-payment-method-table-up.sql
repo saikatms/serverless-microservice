@@ -1,0 +1,17 @@
+/* Replace with your SQL commands */
+CREATE TABLE "payment_methods" (
+    "_id" bigserial PRIMARY KEY,
+    "user_id" bigint NOT NULL,
+    "bank_account" bigint,
+    "swift_code" varchar,
+    "payment_type" varchar,
+    "created_at" timestamptz NOT NULL DEFAULT (now()),
+    "updated_at" timestamptz NOT NULL DEFAULT (now())
+);
+
+CREATE INDEX ON "payment_methods" ("bank_account");
+CREATE INDEX ON "payment_methods" ("user_id");
+CREATE INDEX ON "payment_methods" ("payment_type");
+
+-- Add Relatoin --
+ALTER TABLE "payment_methods" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");

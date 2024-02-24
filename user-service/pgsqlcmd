@@ -1,0 +1,9 @@
+sudo -i -u postgres
+psql
+
+ALTER USER postgres WITH PASSWORD "postgres123";
+CREATE ROLE user_service;
+ALTER ROLE user_service WITH LOGIN;
+ALTER ROLE user_service WITH PASSWORD 'user_service';
+
+ALTER ROLE user_service WITH CREATEDB;
